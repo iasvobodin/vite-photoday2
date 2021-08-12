@@ -12,7 +12,7 @@ word2.innerHTML = word2.textContent.replace(/\S/g, "<span class='letters'>$&</sp
 
 const scroller = document.querySelector('.scroller');
 
-const bodyScrollBar = Scrollbar.init(scroller, { damping: 0.1, delegateTo: document, alwaysShowTracks: true });
+const bodyScrollBar = Scrollbar.init(scroller, { damping: 0.08, renderByPixels: true, delegateTo: document, alwaysShowTracks: true });
 
 ScrollTrigger.scrollerProxy(".scroller", {
   scrollTop(value) {
@@ -34,38 +34,78 @@ ScrollTrigger.defaults({ scroller: scroller });
 const tl = gsap.timeline();
 tl.to('.letters', { 
   opacity:0,
-  stagger: 0.05,
+  stagger:{
+    each: 0.05,
+    from: "end",
+  },
 },0);
 tl.to('.letters', { 
   yPercent:-200,
-  stagger: 0.05,
+  stagger:{
+    each: 0.05,
+    from: "end",
+  },
 },0.1);
 
 
 
 ScrollTrigger.create({
   trigger: ".header__holder",
-  start: "center center", 
-  end: 'center top',
+  start: "bottom bottom", 
+  end: 'bottom top',
   pin: true,
   // pinSpacing: false,
   scrub: true,
-  markers: true,
+  // markers: true,
   animation: tl,
   id: "headline"
 });
 
-gsap.to('.header__background',{
+const tl2 = gsap.timeline();
+tl2.to('.header__background',{
   scale: 1, 
   scrollTrigger:{
-    start: "center top",
+    start: "top top",
+    end: () => "+=" + innerHeight*1.5,
     scrub: true,
     markers: true,
-    id: "bg"
+    id: "bg",
+    // pin: true,
+  }
+})
+tl2.to('.header__background',{
+  scale: 1, 
+  scrollTrigger:{
+    start: "top top",
+    end: () => "+=" + innerHeight*1.5,
+    scrub: true,
+    markers: true,
+    id: "bg",
     // pin: true,
   }
 })
 
+gsap.to('.header__background',{
+  opacity: 0,
+  duration: 0.7,
+  scrollTrigger:{
+    trigger: ".title1",
+    start: "top 30%",
+    toggleActions:"play none none reverse",
+    pin:'.title1',
+    pinSpacing: false,
+  }
+})
+
+
+
+if (document.querySelector('.gsap-marker-scroller-start')) {		
+  const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
+
+  bodyScrollBar.addListener(({ offset }) => {  
+    gsap.set(markers, { marginTop: -offset.y })
+  });
+}
 // The actual animations and ScrollTriggers
 
 

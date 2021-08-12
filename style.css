@@ -5,23 +5,27 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 h1 {
   font-size: max(36px, 10.8vw);
   font-weight: 100;
 }
-
+h2 {
+  font-size: max(24px, 5vw);
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 400;
+  margin: 0;
+}
 .scroller {
   height: 100vh;
 }
 
 .header {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: 'Cormorant Infant', serif;
-
-  line-height: 1.1;
+  line-height: 1.2;
   place-self: center;
 }
 
@@ -38,17 +42,21 @@ h1 {
 .letters {
   display: inline-block;
   white-space: break-spaces;
+  vertical-align: middle;
 }
 
 .word,
 .word2 {
   display: block;
   overflow: hidden;
+  
 }
-
+.word2{
+  z-index: -1;
+}
 .header__background {
   transform-origin: 100% 0%;
-  transform: scale(6);
+  transform: scale(3);
   position: absolute;
   top: 0px;
   z-index: -1;
@@ -63,4 +71,15 @@ img {
   width: 100%;
   object-fit: cover;
   object-position: 100% 0%;
+}
+.description{
+  position: sticky;
+  margin-bottom: 50vh;
+  top: 0px;
+}
+.desc__holder{
+  position: relative;
+}
+.gap{
+  height: 100vh;
 }
