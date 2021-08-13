@@ -53,17 +53,18 @@ h2 {
 }
 .word2{
   z-index: -1;
+  /* margin-top: -5%; */
 }
 .header__background {
   transform-origin: 100% 0%;
-  transform: scale(3);
+  transform: scale(6);
   position: absolute;
   top: 0px;
   z-index: -1;
-  /* justify-self: end; */
-  /* align-self: center; */
-  height: auto;
-  width: 100%;
+  border: 1px solid red;
+  right: 0;
+  height: 100vh;
+  width: min(100vw, calc(100vh * 0.66));
 }
 
 img {
@@ -72,14 +73,26 @@ img {
   object-fit: cover;
   object-position: 100% 0%;
 }
-.description{
-  position: sticky;
-  margin-bottom: 50vh;
-  top: 0px;
+.desc__hedline{
+  margin-top: 20vh;
+  /* position: relative;
+  overflow: auto; */
 }
-.desc__holder{
+.description{
+  height: 100vh;
   position: relative;
 }
+
 .gap{
   height: 100vh;
+}
+.img__holder{
+  height: 100vh;
+  width: min(100vw, calc(100vh * 0.66));
+
+}
+.desc__photos{
+  position: absolute;
+  top: 70vh;
+  right: 0px;
 }

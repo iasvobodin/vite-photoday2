@@ -12,7 +12,12 @@ word2.innerHTML = word2.textContent.replace(/\S/g, "<span class='letters'>$&</sp
 
 const scroller = document.querySelector('.scroller');
 
-const bodyScrollBar = Scrollbar.init(scroller, { damping: 0.08, renderByPixels: true, delegateTo: document, alwaysShowTracks: true });
+const bodyScrollBar = Scrollbar.init(scroller, { 
+  damping: 0.08, 
+  renderByPixels: true, 
+  delegateTo: document, 
+  alwaysShowTracks: false 
+});
 
 ScrollTrigger.scrollerProxy(".scroller", {
   scrollTop(value) {
@@ -32,13 +37,13 @@ ScrollTrigger.defaults({ scroller: scroller });
 
 
 const tl = gsap.timeline();
-tl.to('.letters', { 
-  opacity:0,
-  stagger:{
-    each: 0.05,
-    from: "end",
-  },
-},0);
+// tl.to('.letters', { 
+//   opacity:0,
+//   stagger:{
+//     each: 0.05,
+//     from: "end",
+//   },
+// },0);
 tl.to('.letters', { 
   yPercent:-200,
   stagger:{
@@ -53,7 +58,7 @@ ScrollTrigger.create({
   trigger: ".header__holder",
   start: "bottom bottom", 
   end: 'bottom top',
-  pin: true,
+  pin: ".header__holder",
   // pinSpacing: false,
   scrub: true,
   // markers: true,
@@ -66,38 +71,57 @@ tl2.to('.header__background',{
   scale: 1, 
   scrollTrigger:{
     start: "top top",
-    end: () => "+=" + innerHeight*1.5,
+    end: () => "+=" + innerHeight*1.7,
     scrub: true,
     markers: true,
     id: "bg",
-    // pin: true,
+    pin: '.header__background',
   }
 })
-tl2.to('.header__background',{
-  scale: 1, 
-  scrollTrigger:{
-    start: "top top",
-    end: () => "+=" + innerHeight*1.5,
-    scrub: true,
-    markers: true,
-    id: "bg",
-    // pin: true,
-  }
-})
+// tl2.to('.header__background',{
+//   scale: 1, 
+//   scrollTrigger:{
+//     start: "top top",
+//     end: () => "+=" + innerHeight*1.5,
+//     scrub: true,
+//     markers: true,
+//     id: "bg",
+//     // pin: true,
+//   }
+// })
 
 gsap.to('.header__background',{
   opacity: 0,
   duration: 0.7,
   scrollTrigger:{
-    trigger: ".title1",
+    trigger: ".description",
     start: "top 30%",
     toggleActions:"play none none reverse",
-    pin:'.title1',
+    pin:'.desc__hedline',
     pinSpacing: false,
   }
 })
 
+gsap.to('.img__holder1', {
+  scrollTrigger: {
+    pin: '.img__holder1',
+    end: '+=300%',
+    pinSpacing: false
+  }
+});
 
+gsap.to('.img__holder2', {
+  scrollTrigger: {
+    pin: '.img__holder2',
+    end: '+=200%',
+    pinSpacing: false
+  }
+});
+gsap.to('.img__holder3', {
+  scrollTrigger: {
+    pin: '.img__holder3'
+  }
+})
 
 if (document.querySelector('.gsap-marker-scroller-start')) {		
   const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
