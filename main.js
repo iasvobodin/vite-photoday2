@@ -67,8 +67,9 @@ ScrollTrigger.create({
 });
 
 const tl2 = gsap.timeline();
-tl2.to('.header__background',{
+tl2.to('.header__holder__background',{
   scale: 1, 
+  duration: 0.3,
   scrollTrigger:{
     start: "top top",
     end: () => "+=" + innerHeight*1.7,
@@ -78,17 +79,14 @@ tl2.to('.header__background',{
     pin: '.header__background',
   }
 })
-// tl2.to('.header__background',{
-//   scale: 1, 
-//   scrollTrigger:{
-//     start: "top top",
-//     end: () => "+=" + innerHeight*1.5,
-//     scrub: true,
-//     markers: true,
-//     id: "bg",
-//     // pin: true,
-//   }
-// })
+tl2.to('.header__holder__background',
+{
+  // scale: 1, 
+  duration: 0.7,
+  scrollTrigger: {
+    trigger: '.header__background'
+  }
+});
 
 gsap.to('.header__background',{
   opacity: 0,

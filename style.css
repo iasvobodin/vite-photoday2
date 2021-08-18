@@ -12,12 +12,14 @@ h1 {
   font-size: max(36px, 10.8vw);
   font-weight: 100;
 }
+
 h2 {
   font-size: max(24px, 5vw);
   font-family: 'Cormorant Infant', serif;
   font-weight: 400;
   margin: 0;
 }
+
 .scroller {
   height: 100vh;
 }
@@ -49,15 +51,16 @@ h2 {
 .word2 {
   display: block;
   overflow: hidden;
-  
+
 }
-.word2{
+
+.word2 {
   z-index: -1;
   /* margin-top: -5%; */
 }
+
 .header__background {
-  transform-origin: 100% 0%;
-  transform: scale(6);
+
   position: absolute;
   top: 0px;
   z-index: -1;
@@ -67,32 +70,54 @@ h2 {
   width: min(100vw, calc(100vh * 0.66));
 }
 
+.header__holder__background {
+  transform-origin: 100% 0%;
+  transform: scale(6);
+}
+
 img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: 100% 0%;
 }
-.desc__hedline{
+
+.desc__hedline {
   margin-top: 20vh;
   /* position: relative;
   overflow: auto; */
 }
-.description{
+
+.description {
   height: 100vh;
   position: relative;
 }
 
-.gap{
+.gap {
   height: 100vh;
 }
-.img__holder{
+
+.img__holder {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
+}
+
+.img__holder>h2 {
+  margin-top: 1vh;
+  place-self: center;
+}
+
+.h__holder {
+  justify-self: end;
   height: 100vh;
   width: min(100vw, calc(100vh * 0.66));
-
 }
-.desc__photos{
+
+.desc__photos {
   position: absolute;
+  width: 100%;
   top: 70vh;
   right: 0px;
 }
