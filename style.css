@@ -60,14 +60,13 @@ h2 {
 }
 
 .header__background {
-
   position: absolute;
   top: 0px;
   z-index: -1;
-  border: 1px solid red;
+  border: 2px solid red;
   right: 0;
   height: 100vh;
-  width: min(100vw, calc(100vh * 0.66));
+  width: min(100vw, 50%);
 }
 
 .header__holder__background {
@@ -91,6 +90,7 @@ img {
 .description {
   height: 100vh;
   position: relative;
+  border: 1px solid green;
 }
 
 .gap {
@@ -112,12 +112,14 @@ img {
 .h__holder {
   justify-self: end;
   height: 100vh;
-  width: min(100vw, calc(100vh * 0.66));
+  width: 100%;
+  /* transform: translateX(100%); */
 }
 
 .desc__photos {
   position: absolute;
   width: 100%;
-  top: 70vh;
+  overflow: hidden;
+  /* top: 70vh; */
   right: 0px;
 }

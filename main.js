@@ -69,7 +69,6 @@ ScrollTrigger.create({
 const tl2 = gsap.timeline();
 tl2.to('.header__holder__background',{
   scale: 1, 
-  duration: 0.3,
   scrollTrigger:{
     start: "top top",
     end: () => "+=" + innerHeight*1.7,
@@ -81,30 +80,32 @@ tl2.to('.header__holder__background',{
 })
 tl2.to('.header__holder__background',
 {
-  // scale: 1, 
-  duration: 0.7,
   scrollTrigger: {
-    trigger: '.header__background'
+    pin: '.header__background',
+    end: () => "+=" + innerHeight*3,
   }
 });
 
-gsap.to('.header__background',{
-  opacity: 0,
-  duration: 0.7,
-  scrollTrigger:{
-    trigger: ".description",
-    start: "top 30%",
-    toggleActions:"play none none reverse",
-    pin:'.desc__hedline',
-    pinSpacing: false,
-  }
-})
+// gsap.to('.header__background',{
+//   // opacity: 0,
+//   duration: 0.7,
+//   scrollTrigger:{
+//     trigger: ".description",
+//     start: "top 30%",
+//     toggleActions:"play none none reverse",
+//     pin:'.desc__hedline',
+//     pinSpacing: false,
+//   }
+// })
 
-gsap.to('.img__holder1', {
+gsap.fromTo('.h__holder1',{xPercent: 100}, {
+  xPercent: 0,
   scrollTrigger: {
-    pin: '.img__holder1',
-    end: '+=300%',
-    pinSpacing: false
+    pin: '.desc__photos',
+    trigger:'.img__holder1',
+    // end: '+=300%',
+    pinSpacing: false,
+    scrub: true,
   }
 });
 
