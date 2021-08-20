@@ -36,21 +36,24 @@ ScrollTrigger.defaults({ scroller: scroller });
 
 
 
-const tl = gsap.timeline();
-// tl.to('.letters', { 
-//   opacity:0,
-//   stagger:{
-//     each: 0.05,
-//     from: "end",
-//   },
-// },0);
-tl.to('.letters', { 
+// const tl = gsap.timeline();
+gsap.to('.letters', { 
   yPercent:-200,
+  scrollTrigger:{
+    trigger: ".header__holder",
+    start: "bottom bottom", 
+    end: 'bottom top',
+    pin: ".header__holder",
+    // pinSpacing: false,
+    scrub: true,
+    markers: true,
+    id: "headline"
+  },
   stagger:{
     each: 0.05,
     from: "end",
   },
-},0.1);
+});
 
 
 
@@ -62,7 +65,7 @@ ScrollTrigger.create({
   // pinSpacing: false,
   scrub: true,
   // markers: true,
-  animation: tl,
+  // animation: tl,
   id: "headline"
 });
 
@@ -132,7 +135,7 @@ gsap.fromTo('.h__holder1',{
     start: "top top",
     end: "top top",
     trigger:'.img__holder1',
-    markers: true,
+    // markers: true,
     pin:'.h__holder1',
     id:'trans'
     // pin: '.img__holder1',
