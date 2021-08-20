@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap');
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -101,25 +107,57 @@ img {
   width: 100%;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  border: 3px solid orange;
 }
 
-.img__holder>h2 {
+.hd1 {
+  position: relative;
+  top: 30vh;
+  /* white-space: nowrap; */
+  /* width: 150%; */
+  /* z-index: 5; */
+}
+
+.hd2 {
+  position: relative;
+  top: 50vh;
+}
+
+.hd3 {
+  position: relative;
+  top: 70vh;
+}
+
+/* .img__holder>h2 {
   margin-top: 1vh;
   place-self: center;
-}
+} */
 
 .h__holder {
   justify-self: end;
   height: 100vh;
-  width: 100%;
+  /* width: 100%; */
+
+  /* min-width: 50vw; */
   /* transform: translateX(100%); */
 }
 
-.desc__photos {
-  position: absolute;
+.h__holder1 {
+  /* transform: translate(100%, -50%); */
+}
+
+/* .test__div {
+  height: 100vh;
   width: 100%;
-  overflow: hidden;
+  border: 3px solid orange;
+} */
+
+.desc__photos {
+  overflow-x: hidden;
+  /* position: absolute; */
+  /* width: 100%; */
+  /* overflow: hidden; */
   /* top: 70vh; */
-  right: 0px;
+  /* right: 0px; */
 }

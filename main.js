@@ -71,17 +71,30 @@ tl2.to('.header__holder__background',{
   scale: 1, 
   scrollTrigger:{
     start: "top top",
-    end: () => "+=" + innerHeight*1.7,
+    end: () => "+=" + innerHeight*1.5,
     scrub: true,
-    markers: true,
+    // markers: true,
+    pinSpacing: false,
     id: "bg",
     pin: '.header__background',
   }
 })
+// tl2.to('.h__holder1',
+// {
+//   xPercent: 0,
+//   scrollTrigger: {
+//     // trigger:'.header__holder__background',
+//     pin: '.header__background',
+//     pinSpacing: false,
+//     // end: 'center',
+//     scrub: true,
+//   }
+// });
 tl2.to('.header__holder__background',
 {
   scrollTrigger: {
     pin: '.header__background',
+    pinSpacing: false,
     end: () => "+=" + innerHeight*3,
   }
 });
@@ -98,17 +111,42 @@ tl2.to('.header__holder__background',
 //   }
 // })
 
-gsap.fromTo('.h__holder1',{xPercent: 100}, {
+// gsap.fromTo('.h__holder1',{xPercent: 100}, {
+//   xPercent: 0,
+//   scrollTrigger: {
+//     pin: '.desc__photos',
+//     trigger:'.img__holder1',
+//     // end: '+=300%',
+//     pinSpacing: false,
+//     scrub: true,
+//   }
+// });
+gsap.fromTo('.h__holder1',{
+  xPercent:100,
+  // yPercent: -50,
+}, {
   xPercent: 0,
+  // yPercent: 0,
   scrollTrigger: {
-    pin: '.desc__photos',
+    // scrub: true,
+    start: "top top",
+    end: "top top",
     trigger:'.img__holder1',
+    markers: true,
+    pin:'.h__holder1',
+    id:'trans'
+    // pin: '.img__holder1',
     // end: '+=300%',
-    pinSpacing: false,
-    scrub: true,
+    // pinSpacing: false
   }
 });
-
+gsap.to('.img__holder1', {
+  scrollTrigger: {
+    pin: '.img__holder1',
+    end: '+=300%',
+    pinSpacing: false
+  }
+});
 gsap.to('.img__holder2', {
   scrollTrigger: {
     pin: '.img__holder2',
@@ -118,7 +156,8 @@ gsap.to('.img__holder2', {
 });
 gsap.to('.img__holder3', {
   scrollTrigger: {
-    pin: '.img__holder3'
+    pin: '.img__holder3',
+    // end: '+=300%',
   }
 })
 
