@@ -46,7 +46,7 @@ gsap.to('.letters', {
     pin: ".header__holder",
     // pinSpacing: false,
     scrub: true,
-    markers: true,
+    // markers: true,
     id: "headline"
   },
   stagger:{
@@ -57,17 +57,17 @@ gsap.to('.letters', {
 
 
 
-ScrollTrigger.create({
-  trigger: ".header__holder",
-  start: "bottom bottom", 
-  end: 'bottom top',
-  pin: ".header__holder",
-  // pinSpacing: false,
-  scrub: true,
-  // markers: true,
-  // animation: tl,
-  id: "headline"
-});
+// ScrollTrigger.create({
+//   trigger: ".header__holder",
+//   start: "bottom bottom", 
+//   end: 'bottom top',
+//   pin: ".header__holder",
+//   // pinSpacing: false,
+//   scrub: true,
+//   // markers: true,
+//   // animation: tl,
+//   id: "headline"
+// });
 
 const tl2 = gsap.timeline();
 tl2.to('.header__holder__background',{
@@ -143,26 +143,67 @@ gsap.fromTo('.h__holder1',{
     // pinSpacing: false
   }
 });
-gsap.to('.img__holder1', {
+gsap.to('.anim2__img1', {
+  xPercent: -100,
   scrollTrigger: {
-    pin: '.img__holder1',
-    end: '+=300%',
-    pinSpacing: false
-  }
-});
-gsap.to('.img__holder2', {
-  scrollTrigger: {
-    pin: '.img__holder2',
-    end: '+=200%',
-    pinSpacing: false
-  }
-});
-gsap.to('.img__holder3', {
-  scrollTrigger: {
-    pin: '.img__holder3',
+    pin: '.anim2__img1',
     // end: '+=300%',
+    pinSpacing: false,
+    scrub:true,
+    id:'anim2__img1',
+    // markers:true,
   }
+});
+
+
+ScrollTrigger.create({
+  trigger:'.anim2__img1',
+  pin: '.anim2__img1',
+  end: '+=300%',
 })
+
+ScrollTrigger.create({
+  trigger:'.anim2__img2',
+  pin: '.anim2__img2',
+  end: '+=200%',
+})
+ScrollTrigger.create({
+  trigger:'.anim2__img3',
+  pin: '.anim2__img3',
+  end: '+=200%',
+})
+ScrollTrigger.create({
+  trigger:'.anim2__head1',
+  pin: '.anim2__head1',
+  end: '+=300%',
+  pinSpacing: false,
+})
+ScrollTrigger.create({
+  trigger:'.anim2__head2',
+  pin: '.anim2__head2',
+  end: '+=200%',
+  pinSpacing: false,
+})
+ScrollTrigger.create({
+  trigger:'.anim2__head3',
+  pin: '.anim2__head3',
+  end: '+=100%',
+  pinSpacing: false,
+})
+// anim2__head1
+// gsap.to('.img__holder2', {
+//   scrollTrigger: {
+//     pin: '.img__holder2',
+//     end: '+=200%',
+//     pinSpacing: false
+//   }
+// });
+// gsap.to('.img__holder3', {
+//   scrollTrigger: {
+//     pin: '.img__holder3',
+//     // end: '+=300%',
+//   }
+// })
 
 if (document.querySelector('.gsap-marker-scroller-start')) {		
   const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	

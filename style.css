@@ -69,7 +69,7 @@ h2 {
   position: absolute;
   top: 0px;
   z-index: -1;
- 
+
   right: 0;
   height: 100vh;
   width: min(100vw, 50%);
@@ -77,23 +77,81 @@ h2 {
 
 .header__holder__background {
   transform-origin: 100% 0%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   transform: scale(6);
 }
-.anim2__img__holder{
-  height: 400vh;
+
+.anim2 {
   position: relative;
-  width: 150%;
-  left: 0px;
 }
-.i__holder{
+
+.anim2__img__holder {
+  height: 400vh;
+  overflow: hidden;
+  position: relative;
+  /* border: 1px solid green; */
+  top: -50vh;
+  /* width: 150%; */
+  /* left: 0px; */
+}
+
+.i__holder {
   width: 50vw;
   height: 100vh;
 }
+
+.anim2__img1 {
+  position: absolute;
+
+  /* top: -50vh; */
+  right: -50vw;
+}
+
+.anim2__img2 {
+  position: absolute;
+  top: 200vh;
+  right: 0;
+}
+
+.anim2__img3 {
+  position: absolute;
+  top: 300vh;
+  right: 0;
+}
+
+.anim2__header__holder {
+  position: absolute;
+  top: 0px;
+}
+
+.anim2__head1 {
+  /* border: 1px solid blue; */
+}
+
+.anim2__head1>h2 {
+  position: relative;
+  top: 30vh;
+  left: 5vw;
+}
+
+.anim2__head2>h2 {
+  position: relative;
+  top: 40vh;
+  left: 5vw;
+}
+
+.anim2__head3>h2 {
+  position: relative;
+  top: 50vh;
+  left: 5vw;
+}
+
+
+
 img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: 100% 0%;
 }
 
@@ -110,7 +168,7 @@ img {
 }
 
 .gap {
-  height: 100vh;
+  height: 50vh;
 }
 
 .img__holder {
