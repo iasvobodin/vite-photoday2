@@ -1,6 +1,11 @@
 import './style.css'
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import 'locomotive-scroll/dist/locomotive-scroll.css'
+import {
+  gsap
+} from 'gsap';
+import {
+  ScrollTrigger
+} from 'gsap/ScrollTrigger';
 import Scrollbar from 'smooth-scrollbar'
 import LocomotiveScroll from 'locomotive-scroll';
 gsap.registerPlugin(ScrollTrigger);
@@ -34,40 +39,42 @@ word2.innerHTML = word2.textContent.replace(/\S/g, "<span class='letters'>$&</sp
 // ScrollTrigger.defaults({ scroller: scroller });
 
 
-// const smooth = document.querySelector('.smooth-scroll');
-// const locoScroll = new LocomotiveScroll({
-//   el: smooth,
-//   smooth: true
-// });
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector(".smooth-scroll"),
+  smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+//!locoScroll.options.isMobile&&
+locoScroll.on("scroll", ScrollTrigger.update);
 
-// // if(!locoScroll.isMobile){
-//   locoScroll.on("scroll", ScrollTrigger.update);
-  
-// // }
-// console.log(locoScroll);
-
-
-
-// ScrollTrigger.scrollerProxy(smooth, {
-//   scrollTop(value) {
-//     return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-//   }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-//   getBoundingClientRect() {
-//     return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-//   },
-//   // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-//   pinType: document.querySelector(".smooth-scroll").style.transform ? "transform" : "fixed"
-// });
-
-
+// tell ScrollTrigger to use these proxy methods for the ".smooth-scroll" element since Locomotive Scroll is hijacking things
+//!locoScroll.options.isMobile&&
+ScrollTrigger.scrollerProxy(".smooth-scroll", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+  },
+  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  pinType: document.querySelector(".smooth-scroll").style.transform ? "transform" : "fixed"
+});
+ScrollTrigger.defaults({
+  scroller: document.querySelector(".smooth-scroll")
+});
 
 
 // const tl = gsap.timeline();
-gsap.to('.letters', { 
-  yPercent:-200,
-  scrollTrigger:{
+gsap.to('.letters', {
+  yPercent: -200,
+  scrollTrigger: {
     trigger: ".header__holder",
-    start: "bottom bottom", 
+    start: "bottom bottom",
     end: 'bottom top',
     pin: ".header__holder",
     // pinSpacing: false,
@@ -75,31 +82,18 @@ gsap.to('.letters', {
     // markers: true,
     id: "headline"
   },
-  stagger:{
+  stagger: {
     each: 0.05,
     from: "end",
   },
 });
 
 
-
-// ScrollTrigger.create({
-//   trigger: ".header__holder",
-//   start: "bottom bottom", 
-//   end: 'bottom top',
-//   pin: ".header__holder",
-//   // pinSpacing: false,
-//   scrub: true,
-//   // markers: true,
-//   // animation: tl,
-//   id: "headline"
-// });
-
-gsap.to('.header__holder__background',{
-  scale: 1, 
-  scrollTrigger:{
+gsap.to('.header__holder__background', {
+  scale: 1,
+  scrollTrigger: {
     start: "top top",
-    end: () => "+=" + innerHeight*1,
+    end: () => "+=" + innerHeight * 1,
     scrub: true,
     // markers: true,
     // pinSpacing: false,
@@ -108,107 +102,61 @@ gsap.to('.header__holder__background',{
   }
 })
 
-// tl2.to('.header__holder__background',
-// {
-//   scrollTrigger: {
-//     pin: '.header__background',
-//     pinSpacing: false,
-//     end: () => "+=" + innerHeight*3,
-//   }
-// });
-
 
 ScrollTrigger.create({
-  trigger:'.header__holder__background',
+  trigger: '.header__holder__background',
   pin: '.header__background',
-  end: () => "+=" + innerHeight*3,
+  end: () => "+=" + innerHeight * 3,
 })
 
 
-// gsap.to('.header__background',{
-//   // opacity: 0,
-//   duration: 0.7,
-//   scrollTrigger:{
-//     trigger: ".description",
-//     start: "top 30%",
-//     toggleActions:"play none none reverse",
-//     pin:'.desc__hedline',
-//     pinSpacing: false,
-//   }
-// })
-
-// gsap.fromTo('.h__holder1',{xPercent: 100}, {
-//   xPercent: 0,
-//   scrollTrigger: {
-//     pin: '.desc__photos',
-//     trigger:'.img__holder1',
-//     // end: '+=300%',
-//     pinSpacing: false,
-//     scrub: true,
-//   }
-// });
-// gsap.fromTo('.h__holder1',{
-//   xPercent:100,
-//   // yPercent: -50,
-// }, {
-//   xPercent: 0,
-//   // yPercent: 0,
-//   scrollTrigger: {
-//     // scrub: true,
-//     start: "top top",
-//     end: "top top",
-//     trigger:'.img__holder1',
-//     // markers: true,
-//     pin:'.h__holder1',
-//     id:'trans'
-//     // pin: '.img__holder1',
-//     // end: '+=300%',
-//     // pinSpacing: false
-//   }
-// });
-gsap.to('.anim2__img1', {
+gsap.to('.right__image', {
   xPercent: -100,
   scrollTrigger: {
-    start: 'bottom top ',
-    end: '+=100%',
-    scrub:0.1,
+    trigger: '.anim2__img1',
+    start: 'top ',
+    // end: '+=100%',
+    scrub: 0.1,
+    // markers: true
   }
 });
 
 
 ScrollTrigger.create({
-  trigger:'.anim2__img1',
+  trigger: '.anim2__img1',
   pin: '.anim2__img1',
   end: '+=300%',
   pinSpacing: false,
-  
+  id: 'ppin',
+  // markers: true,
+
 })
 
 ScrollTrigger.create({
-  trigger:'.anim2__img2',
+  trigger: '.anim2__img2',
   pin: '.anim2__img2',
   pinSpacing: false,
   end: '+=200%',
 })
 ScrollTrigger.create({
-  trigger:'.anim2__img3',
+  trigger: '.anim2__img3',
   pin: '.anim2__img3',
   end: '+=100%',
 })
 ScrollTrigger.create({
-  trigger:'.anim2__head1',
+  trigger: '.anim2__head1',
   pin: '.anim2__head1',
   end: '+=300%',
   pinSpacing: false,
 })
 ScrollTrigger.create({
-  trigger:'.anim2__head2',
+  trigger: '.anim2__head2',
   pin: '.anim2__head2',
   end: '+=200%',
   pinSpacing: false,
 })
 ScrollTrigger.create({
-  trigger:'.anim2__head3',
+  trigger: '.anim2__head3',
   pin: '.anim2__head3',
   end: '+=100%',
   pinSpacing: false,
@@ -230,10 +178,10 @@ ScrollTrigger.create({
 
 //NEED IT
 
-// if (document.querySelector('.gsap-marker-scroller-start')) {		
+// // if (document.querySelector('.gsap-marker-scroller-start')) {		
 //   const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
 
-//   bodyScrollBar.addListener(({ offset }) => {  
+// //   bodyScrollBar.addListener(({ offset }) => {  
 //     gsap.set(markers, { marginTop: -offset.y })
 //   });
 // }
@@ -247,13 +195,13 @@ ScrollTrigger.create({
 //     trigger: "section.red",
 //     start:"top 50%",     
 //     toggleActions: "play none none reset",
-//     // markers:true
+    // markers:true
 //   },
 // });
 
 
 // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-// ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
 // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-// ScrollTrigger.refresh();
+ScrollTrigger.refresh();
