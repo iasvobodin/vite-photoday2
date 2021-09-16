@@ -243,8 +243,8 @@ img {
     right: -100vw;
   }
 .smooth-scroll{
-  overflow: hidden;
-  height: 100vh;
+  /* overflow: hidden;
+  height: 100vh; */
 }
   .header__holder__background {
     transform-origin: 100% 0%;
