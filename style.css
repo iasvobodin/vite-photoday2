@@ -90,7 +90,7 @@ h2 {
   overflow: hidden;
   position: relative;
   /* border: 1px solid green; */
-  top: -50vh;
+  top: -100vh;
   /* width: 150%; */
   /* left: 0px; */
 }
@@ -242,7 +242,10 @@ img {
     position: absolute;
     right: -100vw;
   }
-
+.smooth-scroll{
+  overflow: hidden;
+  height: 100vh;
+}
   .header__holder__background {
     transform-origin: 100% 0%;
     transform: scale(7.7);
