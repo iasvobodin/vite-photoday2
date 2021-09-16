@@ -10,27 +10,27 @@ word.innerHTML = word.textContent.replace(/\S/g, "<span class='letters'>$&</span
 const word2 = document.querySelector('.word2');
 word2.innerHTML = word2.textContent.replace(/\S/g, "<span class='letters'>$&</span>");
 
-const scroller = document.querySelector('.scroller');
+// const scroller = document.querySelector('.scroller');
 
-const bodyScrollBar = Scrollbar.init(scroller, { 
-  damping: 0.08, 
-  renderByPixels: true, 
-  delegateTo: document, 
-  alwaysShowTracks: false 
-});
+// const bodyScrollBar = Scrollbar.init(scroller, { 
+//   damping: 0.08, 
+//   renderByPixels: true, 
+//   delegateTo: document, 
+//   alwaysShowTracks: false 
+// });
 
-ScrollTrigger.scrollerProxy(".scroller", {
-  scrollTop(value) {
-    if (arguments.length) {
-      bodyScrollBar.scrollTop = value;
-    }
-    return bodyScrollBar.scrollTop;
-  }
-});
+// ScrollTrigger.scrollerProxy(".scroller", {
+//   scrollTop(value) {
+//     if (arguments.length) {
+//       bodyScrollBar.scrollTop = value;
+//     }
+//     return bodyScrollBar.scrollTop;
+//   }
+// });
 
-bodyScrollBar.addListener(ScrollTrigger.update);
+// bodyScrollBar.addListener(ScrollTrigger.update);
 
-ScrollTrigger.defaults({ scroller: scroller });
+// ScrollTrigger.defaults({ scroller: scroller });
 
 
 
