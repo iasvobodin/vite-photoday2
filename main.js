@@ -11,27 +11,27 @@ word.innerHTML = word.textContent.replace(/\S/g, "<span class='letters'>$&</span
 const word2 = document.querySelector('.word2');
 word2.innerHTML = word2.textContent.replace(/\S/g, "<span class='letters'>$&</span>");
 
-// const scroller = document.querySelector('.scroller');
+const scroller = document.querySelector('.scroller');
 
-// const bodyScrollBar = Scrollbar.init(scroller, { 
-//   damping: 0.08, 
-//   renderByPixels: true, 
-//   delegateTo: document, 
-//   alwaysShowTracks: false 
-// });
+const bodyScrollBar = Scrollbar.init(scroller, { 
+  damping: 0.08, 
+  renderByPixels: true, 
+  delegateTo: document, 
+  alwaysShowTracks: false 
+});
 
-// ScrollTrigger.scrollerProxy(".scroller", {
-//   scrollTop(value) {
-//     if (arguments.length) {
-//       bodyScrollBar.scrollTop = value;
-//     }
-//     return bodyScrollBar.scrollTop;
-//   }
-// });
+ScrollTrigger.scrollerProxy(".scroller", {
+  scrollTop(value) {
+    if (arguments.length) {
+      bodyScrollBar.scrollTop = value;
+    }
+    return bodyScrollBar.scrollTop;
+  }
+});
 
-// bodyScrollBar.addListener(ScrollTrigger.update);
+bodyScrollBar.addListener(ScrollTrigger.update);
 
-// ScrollTrigger.defaults({ scroller: scroller });
+ScrollTrigger.defaults({ scroller: scroller });
 
 
 // const smooth = document.querySelector('.smooth-scroll');
@@ -169,15 +169,9 @@ ScrollTrigger.create({
 gsap.to('.anim2__img1', {
   xPercent: -100,
   scrollTrigger: {
-    // start: 'bottom top ',
-    // pin: '.anim2__img1',
-    end: '+=100',
-    // pinSpacing: false,
-    scrub:true,
-    id:'21',
-  markers:true,
-    // id:'anim2__img1',
-    // markers:true,
+    start: 'bottom top ',
+    end: '+=100%',
+    scrub:0.1,
   }
 });
 
@@ -186,7 +180,7 @@ ScrollTrigger.create({
   trigger:'.anim2__img1',
   pin: '.anim2__img1',
   end: '+=300%',
-  // pinSpacing: false,
+  pinSpacing: false,
   
 })
 
@@ -234,13 +228,15 @@ ScrollTrigger.create({
 //   }
 // })
 
-if (document.querySelector('.gsap-marker-scroller-start')) {		
-  const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
+//NEED IT
 
-  bodyScrollBar.addListener(({ offset }) => {  
-    gsap.set(markers, { marginTop: -offset.y })
-  });
-}
+// if (document.querySelector('.gsap-marker-scroller-start')) {		
+//   const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
+
+//   bodyScrollBar.addListener(({ offset }) => {  
+//     gsap.set(markers, { marginTop: -offset.y })
+//   });
+// }
 // The actual animations and ScrollTriggers
 
 
